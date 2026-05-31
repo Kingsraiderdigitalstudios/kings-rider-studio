@@ -65,7 +65,7 @@
             signInWithEmailAndPassword 
         } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-        // Setup configuration parameters
+        // Verified Configuration from your Firebase dashboard
         const firebaseConfig = {
             apiKey: "AIzaSyDX354S0hE-9l5_5zWNC3vYXh3YbpEUL9k",
             authDomain: "kings-raider-digital-studios.firebaseapp.com",
@@ -75,7 +75,7 @@
             appId: "1:154961726497:web:d894cade5ba0cb7b00e760"
         };
 
-        // Initialize App and Auth Services with strict Browser Persistence
+        // Initialize App and Auth Services with Browser Persistence
         const app = initializeApp(firebaseConfig);
         const auth = initializeAuth(app, {
             persistence: browserSessionPersistence
@@ -102,7 +102,7 @@
                 // Submit credentials to cloud server
                 await signInWithEmailAndPassword(auth, email, password);
                 
-                // Clear session tracking caches and route to landing dashboard
+                // Route to landing dashboard
                 window.location.href = "admin.html";
             } catch (error) {
                 console.error("Authentication Failure Tracker:", error);
@@ -111,7 +111,7 @@
                 submitBtn.disabled = false;
                 submitBtn.innerText = "Verify Identity";
 
-                // Map specific error messages cleanly to the interface
+                // Show error box
                 errorBox.classList.remove('hidden');
                 
                 if (error.code === 'auth/invalid-credential') {
