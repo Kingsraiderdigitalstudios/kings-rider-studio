@@ -3,64 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kings Rider Digital Studios - Portfolio</title>
+    <title>Kings Rider Digital Studios - Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { darkMode: 'class' }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .serif-title { font-family: 'Playfair Display', serif; }
     </style>
 </head>
-<body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-200 antialiased transition-colors duration-300 min-h-screen flex flex-col">
+<body class="bg-zinc-950 text-zinc-200 antialiased min-h-screen flex flex-col">
 
-    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md border-b border-zinc-200/80 dark:border-zinc-800/80 px-4 sm:px-8 md:px-16 py-4 flex justify-between items-center">
-        <div class="text-xl font-bold tracking-widest text-zinc-900 dark:text-white uppercase flex items-center gap-2">
-            <span class="w-3 h-3 bg-emerald-500 rounded-full inline-block"></span>Kings Rider <span class="text-xs text-emerald-600 dark:text-emerald-400 normal-case tracking-normal font-normal ml-1">Digital Studios</span>
-        </div>
-        
-        <div class="flex items-center space-x-6">
-            <button id="theme-toggle" class="bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:text-emerald-500 focus:outline-none p-2.5 rounded-full border border-zinc-200 dark:border-zinc-700 shadow-sm">
-                <svg id="theme-toggle-sun-icon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-                <svg id="theme-toggle-moon-icon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                </svg>
-            </button>
-            <a href="login.html" class="text-xs uppercase tracking-widest font-semibold border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-4 py-2 hover:border-zinc-900 dark:hover:text-white transition-all">Console &rarr;</a>
+    <!-- NAVIGATION BAR -->
+    <nav class="border-b border-zinc-900 bg-zinc-900/50 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                <h1 class="serif-title text-xl font-normal tracking-wide text-white">Kings Rider Control</h1>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="index.html" class="text-xs uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">View Live Portfolio</a>
+                <button id="logout-btn" class="bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-[10px] font-bold uppercase tracking-widest px-4 py-2 transition-colors">
+                    Sign Out
+                </button>
+            </div>
         </div>
     </nav>
 
-    <header class="max-w-4xl mx-auto text-center px-4 pt-16 pb-12">
-        <h1 class="serif-title text-4xl sm:text-5xl font-normal tracking-tight text-zinc-900 dark:text-white">Welcome to Kings Rider</h1>
-        <p class="text-zinc-400 dark:text-zinc-500 text-xs sm:text-sm max-w-md mx-auto mt-3">A premium creative workspace dedicated to capturing stunning visual narratives, high-end digital masterpieces, and timeless portraiture.</p>
-    </header>
+    <!-- MAIN INTERFACE MAIN BODY -->
+    <main class="flex-grow max-w-4xl w-full mx-auto p-6 md:p-10 space-y-10">
+        
+        <!-- WELCOME CARD -->
+        <div>
+            <h2 class="serif-title text-3xl font-normal text-white mb-1">Studio Dashboard</h2>
+            <p class="text-zinc-500 text-xs">Upload new photography work to your cloud gallery files instantly.</p>
+        </div>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 pb-16 flex-grow w-full">
-        <div id="public-gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <p class="col-span-full text-center text-xs text-zinc-400 dark:text-zinc-500 font-light py-12">Streaming visual assets from the cloud...</p>
+        <!-- PHOTO UPLOAD CONTROL PANEL -->
+        <div class="bg-zinc-900 border border-zinc-800 p-6 md:p-8 shadow-2xl relative">
+            <h3 class="serif-title text-xl text-white mb-6 flex items-center gap-2">
+                Upload New Studio Work
+            </h3>
+            
+            <form id="upload-form" class="space-y-6">
+                <!-- File Picker Input Box -->
+                <div>
+                    <label class="block text-[10px] uppercase tracking-widest font-semibold text-zinc-400 mb-2.5">Select Image File</label>
+                    <input type="file" id="photo-file" accept="image/*" required
+                        class="w-full bg-zinc-950 border border-zinc-800 text-sm p-3 text-zinc-400 focus:outline-none focus:border-emerald-500 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-xs file:font-bold file:uppercase file:tracking-wider file:bg-zinc-800 file:text-zinc-200 hover:file:bg-zinc-700 file:transition-colors cursor-pointer">
+                </div>
+                
+                <!-- Feedback Status Message Window -->
+                <div id="upload-status" class="hidden border p-4">
+                    <p id="status-text" class="text-xs font-semibold"></p>
+                </div>
+                
+                <!-- Submission Upload Trigger Button -->
+                <button type="submit" id="upload-btn" 
+                    class="bg-emerald-500 hover:bg-emerald-600 disabled:bg-zinc-800 disabled:text-zinc-500 text-zinc-950 font-bold uppercase tracking-widest text-xs px-8 py-4 transition-all shadow-lg cursor-pointer">
+                    Upload Photo
+                </button>
+            </form>
         </div>
     </main>
 
-    <section class="bg-zinc-100 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800 py-16 px-4 text-center">
-        <h2 class="serif-title text-2xl font-normal text-zinc-900 dark:text-white mb-2">Have a project in mind?</h2>
-        <p class="text-xs text-zinc-400 dark:text-zinc-500 max-w-xs mx-auto mb-6">Let's collaborate to make your creative concepts a reality.</p>
-        <button onclick="alert('Booking form connection template ready! Connected back to Firebase.')" class="bg-zinc-900 text-white dark:bg-emerald-500 text-xs font-semibold uppercase tracking-widest px-6 py-3 hover:bg-emerald-600 transition-all shadow-md">Book a Session</button>
-    </section>
-
-    <footer class="border-t border-zinc-200 dark:border-zinc-900 py-8 text-center text-[10px] tracking-widest text-zinc-400 dark:text-zinc-500 uppercase">
-        <p>&copy; 2026 Kings Rider Digital Studios. All rights reserved.</p>
+    <!-- FOOTER TRACKER -->
+    <footer class="border-t border-zinc-900/60 py-6 text-center text-[10px] text-zinc-600 uppercase tracking-widest">
+        Kings Rider Digital Studios &copy; 2026 Dashboard Portal
     </footer>
 
+    <!-- CLOUD ARCHITECTURE HANDSHAKE SCRIPTS -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+        // Verified Configuration from your dashboard
         const firebaseConfig = {
             apiKey: "AIzaSyDX354S0hE-9l5_5zWNC3vYXh3YbpEUL9k",
             authDomain: "kings-raider-digital-studios.firebaseapp.com",
@@ -70,65 +93,84 @@
             appId: "1:154961726497:web:d894cade5ba0cb7b00e760"
         };
 
+        // Initialize Services
         const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const storage = getStorage(app);
         const db = getFirestore(app);
-        const publicGalleryGrid = document.getElementById('public-gallery-grid');
 
-        // Theme Configuration Management
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const sunIcon = document.getElementById('theme-toggle-sun-icon');
-        const moonIcon = document.getElementById('theme-toggle-moon-icon');
+        const uploadForm = document.getElementById('upload-form');
+        const uploadBtn = document.getElementById('upload-btn');
+        const uploadStatus = document.getElementById('upload-status');
+        const statusText = document.getElementById('status-text');
+        const logoutBtn = document.getElementById('logout-btn');
 
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-            sunIcon.classList.remove('hidden'); moonIcon.classList.add('hidden');
-        } else {
-            document.documentElement.classList.remove('dark');
-            sunIcon.classList.add('hidden'); moonIcon.classList.remove('hidden');
-        }
-
-        themeToggleBtn.addEventListener('click', () => {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark'); localStorage.setItem('theme', 'light');
-                sunIcon.classList.add('hidden'); moonIcon.classList.remove('hidden');
-            } else {
-                document.documentElement.classList.add('dark'); localStorage.setItem('theme', 'dark');
-                sunIcon.classList.remove('hidden'); moonIcon.classList.add('hidden');
+        // SECURITY CHECK: Protect page from unauthenticated users
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                // No user found signed in, throw them back to login gate
+                window.location.href = "login.html";
             }
         });
 
-        // Pull active portfolio assets live from database
-        async function loadPublicGallery() {
-            try {
-                const querySnapshot = await getDocs(collection(db, "gallery"));
-                publicGalleryGrid.innerHTML = "";
+        // HANDLE IMAGE UPLOAD SUBMISSION EVENT
+        if (uploadForm) {
+            uploadForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const fileInput = document.getElementById('photo-file');
+                const file = fileInput.files[0];
+                if (!file) return;
 
-                if (querySnapshot.empty) {
-                    publicGalleryGrid.innerHTML = `<p class="col-span-full text-center text-xs text-zinc-400 dark:text-zinc-500 font-light py-12">No portfolio items published yet.</p>`;
-                    return;
+                // Lock down UI inputs and show status updates
+                uploadBtn.disabled = true;
+                uploadBtn.innerText = "Uploading to Cloud...";
+                
+                uploadStatus.className = "bg-amber-950/40 border-amber-900/60 p-4 block text-amber-400";
+                statusText.innerText = "Connecting to storage bucket and transmitting file...";
+
+                try {
+                    // 1. Send binary image package straight to Firebase Storage folder
+                    const uniqueFileName = `${Date.now()}_${file.name}`;
+                    const storageRef = ref(storage, `portfolio/${uniqueFileName}`);
+                    const snapshot = await uploadBytes(storageRef, file);
+                    
+                    // 2. Fetch the newly created live internet image web link
+                    const downloadURL = await getDownloadURL(snapshot.ref);
+
+                    // 3. Register image link entry into Firestore "photos" database collection
+                    await addDoc(collection(db, "photos"), {
+                        url: downloadURL,
+                        name: file.name,
+                        uploadedAt: new Date()
+                    });
+
+                    // Trigger UI success interface clean up state updates
+                    uploadStatus.className = "bg-emerald-950/40 border-emerald-900/60 p-4 block text-emerald-400";
+                    statusText.innerText = `Success! "${file.name}" is now live on your portfolio gallery.`;
+                    uploadForm.reset();
+                } catch (error) {
+                    console.error("Upload execution process error log:", error);
+                    uploadStatus.className = "bg-rose-950/40 border-rose-900/60 p-4 block text-rose-400";
+                    statusText.innerText = `Upload Failed: ${error.message}`;
+                } finally {
+                    uploadBtn.disabled = false;
+                    uploadBtn.innerText = "Upload Photo";
                 }
-
-                querySnapshot.forEach((docSnapshot) => {
-                    const data = docSnapshot.data();
-                    publicGalleryGrid.innerHTML += `
-                        <div class="group bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xs overflow-hidden transition-all duration-300 hover:shadow-md">
-                            <div class="aspect-square w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
-                                <img src="${data.imageUrl}" alt="${data.title || 'Portfolio'}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-                            </div>
-                            <div class="p-4 border-t border-zinc-100 dark:border-zinc-800/60">
-                                <span class="text-[9px] uppercase tracking-widest font-bold text-emerald-500 dark:text-emerald-400">${data.category || 'General'}</span>
-                                <h3 class="font-medium text-xs text-zinc-900 dark:text-white truncate mt-0.5">${data.title || 'Untitled Masterpiece'}</h3>
-                            </div>
-                        </div>
-                    `;
-                });
-            } catch (error) {
-                console.error(error);
-                publicGalleryGrid.innerHTML = `<p class="col-span-full text-center text-xs text-rose-500 py-12">Failed to sync online portfolio items.</p>`;
-            }
+            });
         }
 
-        loadPublicGallery();
+        // HANDLE DISCONNECT LOGOUT ACTIONS
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', async () => {
+                try {
+                    await signOut(auth);
+                    window.location.href = "login.html";
+                } catch (error) {
+                    alert("Error signing out: " + error.message);
+                }
+            });
+        }
     </script>
 </body>
 </html>
