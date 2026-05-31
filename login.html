@@ -3,57 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kings Rider - Admin Login</title>
+    <title>Kings Rider Digital Studios - Studio Gate</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { darkMode: 'class' }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght=300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .serif-title { font-family: 'Playfair Display', serif; }
     </style>
 </head>
-<body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-200 min-h-screen flex items-center justify-center p-4 transition-colors duration-300">
+<body class="bg-zinc-950 text-zinc-200 antialiased min-h-screen flex flex-col justify-center items-center p-4">
 
-    <div class="w-full max-w-md bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 shadow-xl rounded-sm transition-colors duration-300">
+    <div class="w-full max-w-md bg-zinc-900 border border-zinc-800 p-8 shadow-2xl relative">
         
         <div class="text-center mb-8">
-            <div class="text-xs uppercase tracking-widest font-bold text-emerald-500 mb-2 flex items-center justify-center gap-2">
-                <span class="w-2 h-2 bg-emerald-500 rounded-full inline-block animate-pulse"></span> Protected Area
+            <div class="flex justify-center items-center gap-1.5 text-[10px] tracking-widest uppercase font-bold text-emerald-400 mb-1">
+                <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span> Protected Area
             </div>
-            <h1 class="serif-title text-3xl font-normal text-zinc-900 dark:text-white">Studio Gate</h1>
-            <p class="text-zinc-400 dark:text-zinc-500 text-[10px] uppercase tracking-wider mt-1">Sign in to manage Kings Rider Digital Studios</p>
+            <h1 class="serif-title text-3xl font-normal text-white">Studio Gate</h1>
+            <p class="text-zinc-500 text-[10px] uppercase tracking-widest mt-1">Sign in to manage Kings Rider Digital Studios</p>
         </div>
 
         <form id="login-form" class="space-y-5">
             <div>
-                <label class="block text-[9px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">Admin Email</label>
-                <input type="email" id="login-email" required placeholder="admin@kingsrider.com" class="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 px-4 py-3 text-xs text-zinc-800 dark:text-zinc-200 focus:outline-none focus:border-emerald-500 transition-colors rounded-none">
+                <label class="block text-[10px] uppercase tracking-widest font-semibold text-zinc-400 mb-1.5">Admin Email</label>
+                <input type="email" id="email" required autocomplete="username"
+                    class="w-full bg-zinc-950 border border-zinc-800 text-sm px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors">
             </div>
-            <div>
-                <label class="block text-[9px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">Password</label>
-                <input type="password" id="login-password" required placeholder="••••••••" class="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 px-4 py-3 text-xs text-zinc-800 dark:text-zinc-200 focus:outline-none focus:border-emerald-500 transition-colors rounded-none">
-            </div>
-            
-            <div id="error-message" class="text-rose-500 text-[11px] font-medium p-3 bg-rose-50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900/30 hidden rounded-none tracking-wide"></div>
 
-            <button type="submit" class="w-full bg-zinc-900 text-white dark:bg-emerald-500 font-semibold py-3.5 text-xs uppercase tracking-widest hover:bg-emerald-600 dark:hover:bg-emerald-600 transition-all rounded-none shadow-md">
+            <div>
+                <label class="block text-[10px] uppercase tracking-widest font-semibold text-zinc-400 mb-1.5">Password</label>
+                <input type="password" id="password" required autocomplete="current-password"
+                    class="w-full bg-zinc-950 border border-zinc-800 text-sm px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors">
+            </div>
+
+            <div id="error-box" class="hidden bg-rose-950/40 border border-rose-900/60 p-4">
+                <p id="error-title" class="text-xs font-semibold text-rose-400"></p>
+                <p id="error-debug" class="text-[10px] text-rose-500/80 font-mono mt-1 break-words"></p>
+            </div>
+
+            <button type="submit" id="submit-btn"
+                class="w-full bg-emerald-500 hover:bg-emerald-600 text-zinc-950 font-bold uppercase tracking-widest text-xs py-3.5 transition-all shadow-lg flex justify-center items-center">
                 Verify Identity
             </button>
         </form>
 
-        <div class="text-center mt-6">
-            <a href="index.html" class="text-[10px] uppercase tracking-widest text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">&larr; Return Public Site</a>
+        <div class="text-center mt-8 pt-4 border-t border-zinc-800/60">
+            <a href="index.html" class="text-[10px] uppercase tracking-widest font-medium text-zinc-500 hover:text-zinc-300 transition-colors">&larr; Return Public Site</a>
         </div>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { 
+            initializeAuth, 
+            browserSessionPersistence, 
+            signInWithEmailAndPassword 
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
+        // Setup configuration parameters
         const firebaseConfig = {
             apiKey: "AIzaSyDX354S0hE-9l5_5zWNC3vYXh3YbpEUL9k",
             authDomain: "kings-raider-digital-studios.firebaseapp.com",
@@ -63,36 +75,55 @@
             appId: "1:154961726497:web:d894cade5ba0cb7b00e760"
         };
 
+        // Initialize App and Auth Services with strict Browser Persistence
         const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        }
+        const auth = initializeAuth(app, {
+            persistence: browserSessionPersistence
+        });
 
         const loginForm = document.getElementById('login-form');
-        const errorDiv = document.getElementById('error-message');
+        const submitBtn = document.getElementById('submit-btn');
+        const errorBox = document.getElementById('error-box');
+        const errorTitle = document.getElementById('error-title');
+        const errorDebug = document.getElementById('error-debug');
 
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            errorDiv.classList.add('hidden');
+            
+            // UI Visual Feedback States
+            errorBox.classList.add('hidden');
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Processing Authorization...";
 
-            const email = document.getElementById('login-email').value.trim(); // Added trim to auto-remove accidental whitespace
-            const password = document.getElementById('login-password').value;
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
 
             try {
+                // Submit credentials to cloud server
                 await signInWithEmailAndPassword(auth, email, password);
-                window.location.href = "admin.html"; 
+                
+                // Clear session tracking caches and route to landing dashboard
+                window.location.href = "admin.html";
             } catch (error) {
-                console.error("Firebase Auth Error Object:", error);
+                console.error("Authentication Failure Tracker:", error);
                 
-                // Formats the error code text cleanly (e.g., "auth/invalid-credential" -> "Invalid Credential")
-                let cleanMessage = error.code 
-                    ? error.code.replace('auth/', '').replace(/-/g, ' ')
-                    : error.message;
+                // Restore button state
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Verify Identity";
+
+                // Map specific error messages cleanly to the interface
+                errorBox.classList.remove('hidden');
                 
-                errorDiv.innerHTML = `<strong>Login Failed:</strong> <span class="capitalize">${cleanMessage}</span>.<br><span class="text-[10px] opacity-80 font-normal">Check your Firebase user console settings.</span>`;
-                errorDiv.classList.remove('hidden');
+                if (error.code === 'auth/invalid-credential') {
+                    errorTitle.innerText = "Login Failed: Invalid Credential.";
+                    errorDebug.innerText = "The email or password typed does not match your records. Check your spelling or reset the user password in Firebase Console.";
+                } else if (error.code === 'auth/unauthorized-domain') {
+                    errorTitle.innerText = "Login Failed: Unauthorized Domain.";
+                    errorDebug.innerText = "This host is blocked. Go to Firebase Console > Authentication > Settings > Authorized Domains and add 'kingsraiderdigitalstudios.github.io'";
+                } else {
+                    errorTitle.innerText = `Login Error (${error.code})`;
+                    errorDebug.innerText = error.message;
+                }
             }
         });
     </script>
